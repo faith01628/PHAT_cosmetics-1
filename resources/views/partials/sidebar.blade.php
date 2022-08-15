@@ -31,17 +31,33 @@
                       <a href="{{ route('categories.index') }}" class="nav-link">
                           <i class="nav-icon fas fa-th"></i>
                           <p>
-                              Products Category
+                              Product Categories
                               <span class="right badge badge-danger">New</span>
                           </p>
                       </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ route('menus.index') }}" class= "nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>Menu</p>
-                    </a>
+                      <a href="{{ route('brands.index') }}" class="nav-link">
+                          <i class="nav-icon fas fa-th"></i>
+                          <p>
+                              Product Brands
+                          </p>
+                      </a>
                   </li>
+                  <li class="nav-item">
+                      <a href="{{ route('products.index') }}" class="nav-link">
+                          <i class="nav-icon fas fa-th"></i>
+                          <p>Product</p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{ route('menus.index') }}" class="nav-link">
+                          <i class="nav-icon fas fa-th"></i>
+                          <p>Menu</p>
+                      </a>
+                  </li>
+
+
 
 
               </ul>

@@ -6,14 +6,10 @@ class Recursive{
     private $data;
     private $htmlSelect = '';
 
-
     public function __construct($data) {
         $this->data = $data;
     }
 
-
-
-    
     function categoryRecursive($parentId, $id = 0, $text='') {
             $data = Category::all();
 
