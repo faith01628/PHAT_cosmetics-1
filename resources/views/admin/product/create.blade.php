@@ -12,7 +12,7 @@
 @section('content')
     <div class="content-wrapper">
         @include('partials.content-header', ['name' => 'Product', 'key' => 'Create'])
-        <form action=" " method="POST" enctype="multipart/form-data">
+        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -83,6 +83,6 @@
 
 @section('js')
     <script src="{{ asset('vendors/select2/select2.min.js') }}"></script>
-    <script src="https://cdn.tiny.cloud/1/ck5wbmfdo4p6ezf5lk0acvymsnt5h8w7697xyh2p16hv6ucv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/ck5wbmfdo4p6ezf5lk0acvymsnt5h8w7697xyh2p16hv6ucv/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="{{ asset('admins/product/add/add.js') }}"></script>
 @endsection

@@ -6,10 +6,14 @@ use App\Components\Recursive;
 use App\Components\brandDisplay;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Traits\StorageImageTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class AdminProductController extends Controller
 {
+    use StorageImageTrait;
     private $category;
     private $brand;
 
@@ -43,7 +47,10 @@ class AdminProductController extends Controller
         return $htmlBrand;
     }
 
-
+    public function store(Request $request) {
+        $imageUpload = $this->storageTraitUpload($request, 'featured_image_path', 'product');
+        dd($imageUpload);
+    }
 
 
 
