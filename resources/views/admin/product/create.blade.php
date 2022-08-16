@@ -36,13 +36,13 @@
 
                             <div class="form-group">
                                 <label>Detail Images</label>
-                                <input type="file" class="form-control-file" name="image_path[]">
+                                <input type="file" multiple class="form-control-file" name="image_path[]">
                             </div>
 
 
                             <div class="form-group">
                                 <label>Select Category</label>
-                                <select class="form-control select2_init" name="parent_id">
+                                <select class="form-control select2_init" name="category_id">
                                     <option value="0">Select Category</option>
                                     {!! $htmlOption !!}
                                 </select>
@@ -50,8 +50,8 @@
 
                             <div class="form-group">
                                 <label>Select Brand</label>
-                                <select class="form-control select3_init" name="parent_id">
-                                    <option value="">Select Brand</option>
+                                <select class="form-control select3_init" name="brand_id">
+                                    <option value="0">Select Brand</option>
                                     {!! $htmlBrand !!}
                                 </select>
                             </div>
@@ -68,7 +68,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Product content</label>
-                                <textarea name="content" rows="5" class="form-control tinymce_editor_init"></textarea>
+                                <textarea name="contents" rows="5" class="form-control tinymce_editor_init"></textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
