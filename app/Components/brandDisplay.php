@@ -8,10 +8,15 @@ class brandDisplay {
     
     private $htmlSelect = '';
 
-    public function brandDisplay() {
+    public function brandDisplay($brandId) {
         $data = Brand::all();
             foreach ($data as $value) {
-                $this->htmlSelect .="<Option value='" . $value['id'] ."'>" . $value['name'] ."</option>";
+                if($brandId == $value->id) {
+                    $this->htmlSelect .= '<option selected value="' . $value->id . '">' . $value->name . '</option>';
+                } else {
+                
+                $this->htmlSelect .="<Option value='" . $value->id ."'>" . $value->name ."</option>";
+            }
         }
         return $this->htmlSelect;
     }

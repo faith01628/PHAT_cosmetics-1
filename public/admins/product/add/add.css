@@ -1,3 +1,14 @@
 .select2-selection__choice{
     background-color: #1b2d1f !important;
 }
+
+.product_image_details, .featured_image{
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+.containerproduct_images, .container_featured_image {
+    margin-top: 20px;
+}
+ 
