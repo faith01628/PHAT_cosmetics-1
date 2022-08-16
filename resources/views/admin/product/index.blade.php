@@ -9,6 +9,8 @@
 @endsection
 
 @section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('admins\product\index\list.js') }}"></script>
 @endsection
 
 @section('content')
@@ -42,15 +44,18 @@
                                         <th>{{ $productItem->name }}</th>
                                         <th>{{ $productItem->price }}</th>
                                         <th>
-                                            <img class="product_images_150_150" src="{{ $productItem->featured_image_path }}" alt="">
+                                            <img class="product_images_150_150"
+                                                src="{{ $productItem->featured_image_path }}" alt="">
                                         </th>
                                         <td> {{ $productItem->category->name }}</td>
-                                        <td> {{ $productItem->brand->name }}</td></td>
+                                        <td> {{ $productItem->brand->name }}</td>
+                                        </td>
                                         <td>
-                                            <a href="{{ route('products.edit', ['id' =>$productItem->id]) }}"
+                                            <a href="{{ route('products.edit', ['id' => $productItem->id]) }}"
                                                 class="btn btn-default">Edit</a>
-                                            <a href=" #"
-                                                class="btn btn-danger">Delete</a>
+                                            <a href=" {{ route('products.delete', ['id' => $productItem->id]) }}"
+                                                data-url="{{ route('products.delete', ['id' => $productItem->id]) }}"
+                                                class="btn btn-danger action_delete">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -108,9 +108,7 @@ class AdminProductController extends Controller
         } catch (\Exception $exception) {
             DB::rollBack();
             Log::error(message: 'Message: ' . $exception->getMessage() . ' ----- Line: ' . $exception->getLine());
-        }
-
-        
+        } 
     }
 
     public function edit($id) {
@@ -122,7 +120,72 @@ class AdminProductController extends Controller
         return view('admin.product.edit', compact('product', 'htmlOption', 'htmlBrand'));
     }
 
+    public function update(Request $request, $id) {
+        try {
+            DB::beginTransaction();
+            $dataProductUpdated =  [
+                'name' => $request->name,
+                'price' => $request->price,
+                'category_id' => $request->category_id,
+                'brand_id' => $request->brand_id,
+                'content' => $request->contents,
+                'employee_id' => auth()->id(),
+            ];
 
+            $featuredImageUpload = $this->storageTraitUpload($request, 'featured_image_path', 'product');
+            if (!empty($featuredImageUpload)) {
+                $dataProductUpdated['featured_image_path'] = $featuredImageUpload['file_path'];
+                $dataProductUpdated['featured_image_name'] = $featuredImageUpload['file_name'];
+            }
 
+            $this->product->find($id)->update($dataProductUpdated);
+            $product = $this->product->find($id);
 
+            // Insert data to product_images
+            if($request->hasFile('image_path')) {
+                $this->productImage->where('product_id', $id)->delete();
+                foreach($request->image_path as $imageItem) {
+                    $dataProductImageDetail = $this->storageTraitUploadMulti($imageItem, 'product');
+                    $product->images()->create([
+                        'image_path' => $dataProductImageDetail['file_path'],
+                        'image_name' => $dataProductImageDetail['file_name'],
+                    ]);
+
+                }
+            }
+
+            //Insert tags for product
+            if(!empty($request->tags)) {
+                foreach($request->tags as $tagItem) {
+                    //Tag Insert
+                    $tagInstance = $this->tag->firstOrCreate(['name' => $tagItem]);
+                    $tagIds[] = $tagInstance->id;
+                }
+            }
+            
+            $product->tags()->sync($tagIds);
+            DB::commit();
+            return redirect()->route('products.index');
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            Log::error(message: 'Message: ' . $exception->getMessage() . ' ----- Line: ' . $exception->getLine());
+        }
+
+    }
+
+    public function delete($id) {
+    try {
+        $this->product->find($id)->delete();
+        return response()->json([
+            'code' => 200,
+            'message' => 'sucess',
+            ], 200);
+    } catch (\Exception $exception){ 
+        Log::error(message: 'Message: ' . $exception->getMessage() . ' ----- Line: ' . $exception->getLine());
+        return response()->json([
+            'code' => 500,
+            'message' => 'fail',
+            ], 500);
+        }
+    }
 }

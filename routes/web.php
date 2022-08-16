@@ -134,8 +134,24 @@ Route::prefix('admin')->group(function(){
             'uses' => 'App\Http\Controllers\AdminProductController@edit'
         ]);
 
+        Route::post('/update/{id}', [
+            'as' => 'products.update',
+            'uses' => 'App\Http\Controllers\AdminProductController@update'
+        ]);
+
+        Route::get('/delete/{id}', [
+            'as' => 'products.delete',
+            'uses' => 'App\Http\Controllers\AdminProductController@delete'
+        ]);
 
 
+
+
+
+
+
+
+        
     });
 
 

@@ -39,6 +39,7 @@
     <!-- AdminLTE App -->
     <script src=" {{ asset('adminlte/dist/js/adminlte.min.js') }} "></script>
     @yield('js')
+   
 </body>
 
 </html>
