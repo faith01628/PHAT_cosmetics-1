@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('css')
+    <link href="{{ asset('admins/misc/add/add.css') }}" rel="stylesheet" />
+@endsection
+
 @section('title')
     <title>Edit a brand</title>
 @endsection
@@ -16,8 +20,11 @@
                             @csrf
                             <div class="form-group">
                                 <label>Brand name</label>
-                                <input type="text" class="form-control" name="name" value="{{ $brand->name }}"
-                                    placeholder="Enter new brand">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    name="name" value="{{ $brand->name }}" placeholder="Enter new brand">
+                                @error('name')
+                                    <div class="alert alert-danger"> {{ $message }}</div>
+                                @enderror
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>

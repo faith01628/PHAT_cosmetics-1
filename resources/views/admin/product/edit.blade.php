@@ -21,15 +21,20 @@
                             @csrf
                             <div class="form-group">
                                 <label>Product name</label>
-                                <input type="text" class="form-control" name="name" placeholder="Enter new product"
-                                    value="{{ $product->name }}">
-
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    name="name" placeholder="Enter new product" value="{{ $product->name }}">
+                                @error('name')
+                                    <div class="alert alert-danger"> {{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label>Price</label>
-                                <input type="text" class="form-control" name="price" placeholder="Enter price"
-                                    value="{{ $product->price }}">
+                                <input type="text" class="form-control @error('price') is-invalid @enderror"
+                                    name="price" placeholder="Enter price" value="{{ $product->price }}">
+                                @error('price')
+                                    <div class="alert alert-danger"> {{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
@@ -60,7 +65,8 @@
 
                             <div class="form-group">
                                 <label>Select Category</label>
-                                <select class="form-control select2_init" name="category_id">
+                                <select class="form-control select2_init"
+                                    name="category_id">
                                     <option value="0">Select Category</option>
                                     {!! $htmlOption !!}
                                 </select>
@@ -68,7 +74,8 @@
 
                             <div class="form-group">
                                 <label>Select Brand</label>
-                                <select class="form-control select3_init" name="brand_id">
+                                <select class="form-control select3_init"
+                                    name="brand_id">
                                     <option value="0">Select Brand</option>
                                     {!! $htmlBrand !!}
                                 </select>
@@ -77,7 +84,7 @@
                             <div class="form-group">
                                 <label>Enter product tag</label>
                                 <select name="tags[]" class="form-control tags_selector" multiple="multiple">
-                                    @foreach ( $product->tags as $tagItem )
+                                    @foreach ($product->tags as $tagItem)
                                         <option value="{{ $tagItem->name }}" selected>{{ $tagItem->name }}</option>
                                     @endforeach
                                 </select>
@@ -88,7 +95,11 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Product content</label>
-                                <textarea name="contents" rows="5" class="form-control tinymce_editor_init">{{ $product->content }}"</textarea>
+                                <textarea name="contents" rows="5"
+                                    class="form-control tinymce_editor_init @error('contents') is-invalid @enderror">{{ $product->content }}"</textarea>
+                                @error('contents')
+                                    <div class="alert alert-danger"> {{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-12">

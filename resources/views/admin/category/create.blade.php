@@ -1,7 +1,11 @@
 @extends('layouts.admin')
 
+@section('css')
+    <link href="{{ asset('admins/misc/add/add.css') }}" rel="stylesheet" />
+@endsection
+
 @section('title')
-    <title>Create new category</title>
+    <title>Create new Category</title>
 @endsection
 
 @section('content')
@@ -16,7 +20,11 @@
                             @csrf
                             <div class="form-group">
                                 <label>Category name</label>
-                                <input type="text" class="form-control" name="name" placeholder="Enter new category">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
+                                    placeholder="Enter new category" value="{{ old('name') }}">
+                                @error('name')
+                                    <div class="alert alert-danger"> {{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">

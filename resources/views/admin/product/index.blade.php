@@ -9,7 +9,7 @@
 @endsection
 
 @section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('vendors\sweetAlert2\sweetAlert2.js') }}"></script>
     <script src="{{ asset('admins\product\index\list.js') }}"></script>
 @endsection
 

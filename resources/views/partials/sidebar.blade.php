@@ -40,7 +40,7 @@
                       <a href="{{ route('brands.index') }}" class="nav-link">
                           <i class="nav-icon fas fa-th"></i>
                           <p>
-                              Product Brands
+                              Brands
                           </p>
                       </a>
                   </li>
@@ -56,6 +56,16 @@
                           <p>Menu</p>
                       </a>
                   </li>
+                  <li class="nav-item">
+                      <a href="{{ route('sliders.index') }}" class="nav-link">
+                          <i class="nav-icon fas fa-th"></i>
+                          <p>Sliders</p>
+                      </a>
+                  </li>
+
+
+
+
 
 
 

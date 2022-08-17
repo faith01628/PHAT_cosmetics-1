@@ -12,7 +12,7 @@ Route::get('/home', function(){
     return view('home');
 });
 
-
+//Category
 Route::prefix('admin')->group(function(){
     Route::prefix('categories')->group(function () {
         Route::get('/', [
@@ -20,145 +20,158 @@ Route::prefix('admin')->group(function(){
             'uses' => 'App\Http\Controllers\CategoryController@index'
         ]);
         
-        Route::get('/create', [
-            'as' => 'categories.create',
-            'uses' => 'App\Http\Controllers\CategoryController@create'
-        ]);
-        
-        Route::post('/store', [
-            'as' => 'categories.store',
-            'uses' => 'App\Http\Controllers\CategoryController@store'
-        ]);
+    Route::get('/create', [
+        'as' => 'categories.create',
+        'uses' => 'App\Http\Controllers\CategoryController@create'
+    ]);
     
-        Route::get('/edit/{id}', [
-            'as' => 'categories.edit',
-            'uses' => 'App\Http\Controllers\CategoryController@edit'
-        ]);
+    Route::post('/store', [
+        'as' => 'categories.store',
+        'uses' => 'App\Http\Controllers\CategoryController@store'
+    ]);
+
+    Route::get('/edit/{id}', [
+        'as' => 'categories.edit',
+        'uses' => 'App\Http\Controllers\CategoryController@edit'
+    ]);
+
+    Route::post('/update/{id}', [
+        'as' => 'categories.update',
+        'uses' => 'App\Http\Controllers\CategoryController@update'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'as' => 'categories.delete',
+        'uses' => 'App\Http\Controllers\CategoryController@delete'
+    ]);
+
+});
+
+//Brand    
+Route::prefix('brands')->group(function () {
+    Route::get('/', [
+        'as' => 'brands.index',
+        'uses' => 'App\Http\Controllers\BrandController@index'
+    ]);
     
-        Route::post('/update/{id}', [
-            'as' => 'categories.update',
-            'uses' => 'App\Http\Controllers\CategoryController@update'
-        ]);
+    Route::get('/create', [
+        'as' => 'brands.create',
+        'uses' => 'App\Http\Controllers\BrandController@create'
+    ]);
     
-        Route::get('/delete/{id}', [
-            'as' => 'categories.delete',
-            'uses' => 'App\Http\Controllers\CategoryController@delete'
-        ]);
+    Route::post('/store', [
+        'as' => 'brands.store',
+        'uses' => 'App\Http\Controllers\BrandController@store'
+    ]);
+
+    Route::get('/edit/{id}', [
+        'as' => 'brands.edit',
+        'uses' => 'App\Http\Controllers\BrandController@edit'
+    ]);
+
+    Route::post('/update/{id}', [
+        'as' => 'brands.update',
+        'uses' => 'App\Http\Controllers\BrandController@update'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'as' => 'brands.delete',
+        'uses' => 'App\Http\Controllers\BrandController@delete'
+    ]);
+
+});
+
+//Menu
+Route::prefix('menus')->group(function () {
+    Route::get('/', [
+        'as' => 'menus.index',
+        'uses' => 'App\Http\Controllers\MenuController@index'
+    ]);
     
-    });
+    Route::get('/create', [
+        'as' => 'menus.create',
+        'uses' => 'App\Http\Controllers\MenuController@create'
+    ]);
     
-    Route::prefix('brands')->group(function () {
-        Route::get('/', [
-            'as' => 'brands.index',
-            'uses' => 'App\Http\Controllers\BrandController@index'
-        ]);
-        
-        Route::get('/create', [
-            'as' => 'brands.create',
-            'uses' => 'App\Http\Controllers\BrandController@create'
-        ]);
-        
-        Route::post('/store', [
-            'as' => 'brands.store',
-            'uses' => 'App\Http\Controllers\BrandController@store'
-        ]);
+    Route::post('/store', [
+        'as' => 'menus.store',
+        'uses' => 'App\Http\Controllers\MenuController@store'
+    ]);
     
-        Route::get('/edit/{id}', [
-            'as' => 'brands.edit',
-            'uses' => 'App\Http\Controllers\BrandController@edit'
-        ]);
+    Route::get('/edit/{id}', [
+        'as' => 'menus.edit',
+        'uses' => 'App\Http\Controllers\MenuController@edit'
+    ]);
+
+    Route::post('/update/{id}', [
+        'as' => 'menus.update',
+        'uses' => 'App\Http\Controllers\MenuController@update'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'as' => 'menus.delete',
+        'uses' => 'App\Http\Controllers\MenuController@delete'
+    ]);
+
+});
+
+//Product
+Route::prefix('products')->group(function () {
+    Route::get('/', [
+        'as' => 'products.index',
+        'uses' => 'App\Http\Controllers\AdminProductController@index'
+    ]);
     
-        Route::post('/update/{id}', [
-            'as' => 'brands.update',
-            'uses' => 'App\Http\Controllers\BrandController@update'
-        ]);
+    Route::get('/create', [
+        'as' => 'products.create',
+        'uses' => 'App\Http\Controllers\AdminProductController@create'
+    ]);
+
+    Route::post('/store', [
+        'as' => 'products.store',
+        'uses' => 'App\Http\Controllers\AdminProductController@store'
+    ]);
+
+    Route::get('/edit/{id}', [
+        'as' => 'products.edit',
+        'uses' => 'App\Http\Controllers\AdminProductController@edit'
+    ]);
+
+    Route::post('/update/{id}', [
+        'as' => 'products.update',
+        'uses' => 'App\Http\Controllers\AdminProductController@update'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'as' => 'products.delete',
+        'uses' => 'App\Http\Controllers\AdminProductController@delete'
+    ]);
     
-        Route::get('/delete/{id}', [
-            'as' => 'brands.delete',
-            'uses' => 'App\Http\Controllers\BrandController@delete'
-        ]);
-    
-    });
+});
 
-    Route::prefix('menus')->group(function () {
-        Route::get('/', [
-            'as' => 'menus.index',
-            'uses' => 'App\Http\Controllers\MenuController@index'
-        ]);
-        
-        Route::get('/create', [
-            'as' => 'menus.create',
-            'uses' => 'App\Http\Controllers\MenuController@create'
-        ]);
-        
-        Route::post('/store', [
-            'as' => 'menus.store',
-            'uses' => 'App\Http\Controllers\MenuController@store'
-        ]);
-        
-        Route::get('/edit/{id}', [
-            'as' => 'menus.edit',
-            'uses' => 'App\Http\Controllers\MenuController@edit'
-        ]);
-    
-        Route::post('/update/{id}', [
-            'as' => 'menus.update',
-            'uses' => 'App\Http\Controllers\MenuController@update'
-        ]);
-    
-        Route::get('/delete/{id}', [
-            'as' => 'menus.delete',
-            'uses' => 'App\Http\Controllers\MenuController@delete'
-        ]);
-    
-    });
+//Slider
+Route::prefix('sliders')->group(function () {
+    Route::get('/', [
+        'as' => 'sliders.index',
+        'uses' => 'App\Http\Controllers\SliderAdminController@index'
+    ]);
 
-    Route::prefix('products')->group(function () {
-        Route::get('/', [
-            'as' => 'products.index',
-            'uses' => 'App\Http\Controllers\AdminProductController@index'
-        ]);
-        
-        Route::get('/create', [
-            'as' => 'products.create',
-            'uses' => 'App\Http\Controllers\AdminProductController@create'
-        ]);
+    Route::get('create', [
+        'as' => 'sliders.create',
+        'uses' => 'App\Http\Controllers\SliderAdminController@create'
+    ]);
 
-        Route::post('/store', [
-            'as' => 'products.store',
-            'uses' => 'App\Http\Controllers\AdminProductController@store'
-        ]);
-
-        Route::get('/edit/{id}', [
-            'as' => 'products.edit',
-            'uses' => 'App\Http\Controllers\AdminProductController@edit'
-        ]);
-
-        Route::post('/update/{id}', [
-            'as' => 'products.update',
-            'uses' => 'App\Http\Controllers\AdminProductController@update'
-        ]);
-
-        Route::get('/delete/{id}', [
-            'as' => 'products.delete',
-            'uses' => 'App\Http\Controllers\AdminProductController@delete'
-        ]);
+    Route::post('store', [
+        'as' => 'sliders.store',
+        'uses' => 'App\Http\Controllers\SliderAdminController@store'
+    ]);
 
 
 
 
 
 
-
-
-        
-    });
-
-
-
-
-
-
+});
 
 
 

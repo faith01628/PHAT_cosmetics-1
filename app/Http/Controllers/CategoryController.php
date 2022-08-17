@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Components\Recursive;
+use App\Http\Requests\CategoryCreateRequest;
 use Illuminate\Support\Str;
 
 
@@ -29,7 +29,7 @@ class CategoryController extends Controller
         return view('admin.category.index', compact('categories'));
     }
 
-    public function store(Request $request) {
+    public function store(CategoryCreateRequest $request) {
         $this->category->create([
             'name' => $request->name,
             'parent_id' => $request->parent_id,
@@ -53,7 +53,7 @@ class CategoryController extends Controller
         return view('admin.category.edit', compact('category', 'htmlOption'));
     }
 
-    public function update($id, Request $request) {
+    public function update($id, CategoryCreateRequest $request) {
         $this->category->find($id)->update([
             'name' => $request->name,
             'parent_id' => $request->parent_id,

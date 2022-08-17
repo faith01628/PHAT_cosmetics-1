@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Components\Recursive;
 use App\Components\brandDisplay;
+use App\Http\Requests\ProductCreateRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
@@ -42,8 +43,8 @@ class AdminProductController extends Controller
     }
 
     public function create() {
-        $htmlOption = $this->getCategory($parentId = ' ');
-        $htmlBrand = $this->getBrand($brandId = ' ');
+        $htmlOption = $this->getCategory($parentId = '');
+        $htmlBrand = $this->getBrand($brandId = '');
         return view('admin.product.create', compact('htmlOption', 'htmlBrand'));
     }
 
@@ -61,7 +62,7 @@ class AdminProductController extends Controller
         return $htmlBrand;
     }
 
-    public function store(Request $request) {
+    public function store(ProductCreateRequest $request) {
         try {
             DB::beginTransaction();
             $dataProductCreated =  [
@@ -72,7 +73,7 @@ class AdminProductController extends Controller
                 'content' => $request->contents,
                 'employee_id' => auth()->id(),
             ];
-
+            
             $featuredImageUpload = $this->storageTraitUpload($request, 'featured_image_path', 'product');
             if (!empty($featuredImageUpload)) {
                 $dataProductCreated['featured_image_path'] = $featuredImageUpload['file_path'];
@@ -106,6 +107,8 @@ class AdminProductController extends Controller
             DB::commit();
             return redirect()->route('products.index');
         } catch (\Exception $exception) {
+            // store screen is blank, check if logged in or not
+            // dd($exception->getMessage());
             DB::rollBack();
             Log::error(message: 'Message: ' . $exception->getMessage() . ' ----- Line: ' . $exception->getLine());
         } 
@@ -120,7 +123,7 @@ class AdminProductController extends Controller
         return view('admin.product.edit', compact('product', 'htmlOption', 'htmlBrand'));
     }
 
-    public function update(Request $request, $id) {
+    public function update(ProductCreateRequest $request, $id) {
         try {
             DB::beginTransaction();
             $dataProductUpdated =  [
@@ -174,15 +177,15 @@ class AdminProductController extends Controller
     }
 
     public function delete($id) {
-    try {
-        $this->product->find($id)->delete();
-        return response()->json([
+        try {
+            $this->product->find($id)->delete();
+            return response()->json([
             'code' => 200,
             'message' => 'sucess',
             ], 200);
-    } catch (\Exception $exception){ 
-        Log::error(message: 'Message: ' . $exception->getMessage() . ' ----- Line: ' . $exception->getLine());
-        return response()->json([
+        } catch (\Exception $exception){ 
+            Log::error(message: 'Message: ' . $exception->getMessage() . ' ----- Line: ' . $exception->getLine());
+            return response()->json([
             'code' => 500,
             'message' => 'fail',
             ], 500);

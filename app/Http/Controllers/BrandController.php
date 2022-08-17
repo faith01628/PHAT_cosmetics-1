@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BrandCreateRequest;
 use App\Models\Brand;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class BrandController extends Controller
@@ -23,7 +23,7 @@ class BrandController extends Controller
         return view('admin.brand.create');
     }
 
-    public function store(Request $request) {
+    public function store(BrandCreateRequest $request) {
         $this->brand->create([
             'name' => $request->name,
             'slug' => Str::slug($request->name)
@@ -37,7 +37,7 @@ class BrandController extends Controller
         return view('admin.brand.edit', compact('brand'));
     }
 
-    public function update($id, Request $request) {
+    public function update($id, BrandCreateRequest $request) {
         $this->brand->find($id)->update([
             'name' => $request->name,
             'slug' => Str::slug($request->name)

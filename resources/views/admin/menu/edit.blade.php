@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('css')
+    <link href="{{ asset('admins/misc/add/add.css') }}" rel="stylesheet" />
+@endsection
+
 @section('title')
     <title>Edit Category</title>
 @endsection
@@ -12,11 +16,16 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <form action="{{ route('menus.update', ['id' => $menuFollowIdEdit->id]) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('menus.update', ['id' => $menuFollowIdEdit->id]) }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label>Menu name</label>
-                                <input type="text" class="form-control" name="name" placeholder="Edit menu name" value="{{ $menuFollowIdEdit->name }}">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    name="name" placeholder="Enter new menu name" value="{{ $menuFollowIdEdit->name }}">
+                                @error('name')
+                                    <div class="alert alert-danger"> {{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="form-group">
