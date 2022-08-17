@@ -166,14 +166,59 @@ Route::prefix('sliders')->group(function () {
         'uses' => 'App\Http\Controllers\SliderAdminController@store'
     ]);
 
+    Route::get('edit/{id}', [
+        'as' => 'sliders.edit',
+        'uses' => 'App\Http\Controllers\SliderAdminController@edit'
+    ]);
 
+    Route::post('update/{id}', [
+        'as' => 'sliders.update',
+        'uses' => 'App\Http\Controllers\SliderAdminController@update'
+    ]);
 
-
+    Route::get('delete/{id}', [
+        'as' => 'sliders.delete',
+        'uses' => 'App\Http\Controllers\SliderAdminController@delete'
+    ]);
 
 
 });
 
+//Settings
+Route::prefix('settings')->group(function () {
+    Route::get('/', [
+        'as' => 'settings.index',
+        'uses' => 'App\Http\Controllers\AdminSettingsController@index'
+    ]);
+    
+    Route::get('/create', [
+        'as' => 'settings.create',
+        'uses' => 'App\Http\Controllers\AdminSettingsController@create'
+    ]);
 
+    Route::post('/store',[
+        'as' => 'settings.store',
+        'uses' => 'App\Http\Controllers\AdminSettingsController@store'
+    ]);
+
+    Route::get('/edit/{id}', [
+        'as' => 'settings.edit',
+        'uses' => 'App\Http\Controllers\AdminSettingsController@edit'
+    ]);
+
+    Route::post('/update/{id}',[
+        'as' =>'settings.update',
+        'uses' => 'App\Http\Controllers\AdminSettingsController@update'
+    ]); 
+
+    Route::get('/delete/{id}', [
+        'as' => 'settings.delete',
+        'uses' => 'App\Http\Controllers\AdminSettingsController@delete'
+    ]);
+
+
+
+});
 
 
 

@@ -16,9 +16,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\DeleteModelTrait;
 
 class AdminProductController extends Controller
 {
+    use DeleteModelTrait;
     use StorageImageTrait;
     private $category;
     private $brand;
@@ -177,18 +179,6 @@ class AdminProductController extends Controller
     }
 
     public function delete($id) {
-        try {
-            $this->product->find($id)->delete();
-            return response()->json([
-            'code' => 200,
-            'message' => 'sucess',
-            ], 200);
-        } catch (\Exception $exception){ 
-            Log::error(message: 'Message: ' . $exception->getMessage() . ' ----- Line: ' . $exception->getLine());
-            return response()->json([
-            'code' => 500,
-            'message' => 'fail',
-            ], 500);
-        }
+        return $this->deleteModelTrait($id, $this->product);
     }
 }

@@ -12,7 +12,7 @@
 @section('content')
     <div class="content-wrapper">
         @include('partials.content-header', ['name' => 'Product', 'key' => 'Edit'])
-        <form action="{{ route('products.update', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('products.update', ['id' =>$product->id]) }}" method="POST" enctype="multipart/form-data">
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">

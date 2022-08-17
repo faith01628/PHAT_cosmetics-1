@@ -5,12 +5,12 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('admins\product\index\list.css') }}">
+    <link rel="stylesheet" href="{{ asset('admins/product/index/list.css') }}">
 @endsection
 
 @section('js')
-    <script src="{{ asset('vendors\sweetAlert2\sweetAlert2.js') }}"></script>
-    <script src="{{ asset('admins\product\index\list.js') }}"></script>
+    <script src="{{ asset('vendors/sweetAlert2/sweetAlert2.js') }}"></script>
+    <script src="{{ asset('admins/misc/delete/delete.js') }}"></script>
 @endsection
 
 @section('content')

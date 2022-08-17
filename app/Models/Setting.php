@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Slider extends Model
+class Setting extends Model
 {
-    protected $table= 'Sliders';
     protected $guarded = [];
-    use SoftDeletes;
+    
     use HasFactory;
+    use SoftDeletes;
 }

@@ -4,6 +4,15 @@
     <title>Sliders</title>
 @endsection
 
+@section('css')
+    <link href="{{ asset('admins/slider/index/index.css') }}" rel="stylesheet" />
+@endsection
+
+@section('js')
+    <script src="{{ asset('vendors/sweetAlert2/sweetAlert2.js') }}"></script>
+    <script src="{{ asset('admins/misc/delete/delete.js') }}"></script>
+@endsection
+
 @section('content')
     <div class="content-wrapper">
         @include('partials.content-header', ['name' => 'Slider', 'key' => 'List'])
@@ -27,26 +36,27 @@
                             </thead>
                             <tbody>
 
-                                {{-- @foreach ($menus as $menu) --}}
+                                @foreach ($sliders as $slider)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Homepage_Slider</td>
-                                        <td>Description 1</td>
-                                        <td>Image 1</td>
+                                        <th scope="row"> {{ $slider->id }}</th>
+                                        <td>{{ $slider->name }}</td>
+                                        <td>{{ $slider->description }}</td>
+                                        <td><img src="{{ $slider->image_path }}" alt=""
+                                                class="image_slider_150_100"></td>
                                         <td>
-                                            <a href="#"
+                                            <a href="{{ route('sliders.edit', $slider->id) }}"
                                                 class="btn btn-default">Edit</a>
-                                            <a href="#"
-                                                class="btn btn-danger">Delete</a>
+                                            <a href="" data-url="{{ route('sliders.delete', $slider->id) }}"
+                                                class="btn btn-danger action_delete">Delete</a>
                                         </td>
                                     </tr>
-                                {{-- @endforeach --}}
+                                @endforeach
 
                             </tbody>
                         </table>
                     </div>
                     <div class="col-md-12">
-                        {{-- {{ $menus->links() }} --}}
+                        {{ $sliders->links() }}
                     </div>
 
                 </div>
