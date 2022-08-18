@@ -46,7 +46,8 @@
                                         <td>
                                             <a href="{{ route('sliders.edit', $slider->id) }}"
                                                 class="btn btn-default">Edit</a>
-                                            <a href="" data-url="{{ route('sliders.delete', $slider->id) }}"
+                                            <a href="{{ route('sliders.delete', $slider->id) }}"
+                                                data-url="{{ route('sliders.delete', $slider->id) }}"
                                                 class="btn btn-danger action_delete">Delete</a>
                                         </td>
                                     </tr>

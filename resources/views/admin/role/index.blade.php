@@ -1,7 +1,10 @@
 @extends('layouts.admin')
 
 @section('title')
-    <title>Menu List</title>
+    <title>Roles</title>
+@endsection
+
+@section('css')
 @endsection
 
 @section('js')
@@ -11,36 +14,35 @@
 
 @section('content')
     <div class="content-wrapper">
-        @include('partials.content-header', ['name' => 'Menu', 'key' => 'List'])
+        @include('partials.content-header', ['name' => 'Roles', 'key' => 'List'])
 
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{ route('menus.create') }}" class="btn btn-success float-right m-2">Create new
-                            Menu</a>
+                        <a href="{{ route('roles.create') }}" class="btn btn-success float-right m-2">Create New Role</a>
                     </div>
                     <div class="col-md-12">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">No.</th>
-                                    <th scope="col">Menu Name</th>
+                                    <th scope="col">Role Name</th>
+                                    <th scope="col">Description</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @foreach ($menus as $menu)
+                                @foreach ($roles as $role)
                                     <tr>
-                                        <th scope="row">{{ $menu->id }}</th>
-                                        <td>{{ $menu->name }}</td>
+                                        <th scope="row"> {{ $role->id }} </th>
+                                        <td> {{ $role->name }} </td>
+                                        <td> {{ $role->display_name }} </td>
+
                                         <td>
-                                            <a href="{{ route('menus.edit', ['id' => $menu->id]) }}"
-                                                class="btn btn-default">Edit</a>
-                                            <a href="{{ route('menus.delete', ['id' => $menu->id]) }}"
-                                                data-url="{{ route('menus.delete', ['id' => $menu->id]) }}"
-                                                class="btn btn-danger action_delete">Delete</a>
+                                            <a href="#" class="btn btn-default">Edit</a>
+                                            <a href="#" data-url="#" class="btn btn-danger action_delete">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -49,7 +51,7 @@
                         </table>
                     </div>
                     <div class="col-md-12">
-                        {{ $menus->links() }}
+                        {{ $roles->links() }}
                     </div>
 
                 </div>

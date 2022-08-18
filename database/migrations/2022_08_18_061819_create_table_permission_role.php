@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('permission_role', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('price');
-            $table->string('featured_image_path')->nullable();
-            $table->text('content');
-            $table->integer('user_id');
-            $table->integer('category_id');
-            $table->integer('brand_id');
+            $table->integer('role_id');
+            $table->integer('permission_id');
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('permission_role');
     }
 };

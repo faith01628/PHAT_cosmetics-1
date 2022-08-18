@@ -27,7 +27,7 @@ function actionDelete(event) {
                     }
 
                 },
-                error: function (data) {
+                error: function () {
 
                 }
             });

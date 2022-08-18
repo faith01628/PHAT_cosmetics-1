@@ -63,11 +63,23 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ route('settings.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>Settings</p>
-                    </a>
-                </li>
+                      <a href="{{ route('settings.index') }}" class="nav-link">
+                          <i class="nav-icon fas fa-th"></i>
+                          <p>Settings</p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{ route('users.index') }}" class="nav-link">
+                          <i class="nav-icon fas fa-th"></i>
+                          <p>Users List</p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="{{ route('roles.index') }}" class="nav-link">
+                          <i class="nav-icon fas fa-th"></i>
+                          <p>Roles List</p>
+                      </a>
+                  </li>
 
 
 

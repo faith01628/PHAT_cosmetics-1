@@ -10,7 +10,7 @@ class Product extends Model
 {
     use SoftDeletes;
     protected $table = 'Products';
-    protected $fillable = ['name','price','featured_image_path','content','employee_id','category_id','brand_id','featured_image_name'];
+    protected $fillable = ['name','price','featured_image_path','content','user_id','category_id','brand_id','featured_image_name'];
     
     public function images() {
         return $this->hasMany(ProductImage::class, 'product_id');

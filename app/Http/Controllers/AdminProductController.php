@@ -73,7 +73,7 @@ class AdminProductController extends Controller
                 'category_id' => $request->category_id,
                 'brand_id' => $request->brand_id,
                 'content' => $request->contents,
-                'employee_id' => auth()->id(),
+                'user_id' => auth()->id(),
             ];
             
             $featuredImageUpload = $this->storageTraitUpload($request, 'featured_image_path', 'product');
@@ -134,7 +134,7 @@ class AdminProductController extends Controller
                 'category_id' => $request->category_id,
                 'brand_id' => $request->brand_id,
                 'content' => $request->contents,
-                'employee_id' => auth()->id(),
+                'user_id' => auth()->id(),
             ];
 
             $featuredImageUpload = $this->storageTraitUpload($request, 'featured_image_path', 'product');

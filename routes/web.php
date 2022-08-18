@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\CategoryController;
+use Illuminate\Support\Facades\Auth;
 
 // For admin access
 Route::get('/admin', 'App\Http\Controllers\AdminController@loginAdmin');
@@ -215,12 +216,69 @@ Route::prefix('settings')->group(function () {
         'as' => 'settings.delete',
         'uses' => 'App\Http\Controllers\AdminSettingsController@delete'
     ]);
-
-
-
 });
 
+//User
+Route::prefix('users')->group(function () {
+    Route::get('/', [
+        'as' => 'users.index',
+        'uses' => 'App\Http\Controllers\AdminUserController@index'
+    ]);
 
+    Route::get('/create', [
+        'as' => 'users.create',
+        'uses' => 'App\Http\Controllers\AdminUserController@create'
+    ]);
+
+    Route::post('/store', [
+        'as' => 'users.store',
+        'uses' => 'App\Http\Controllers\AdminUserController@store'
+    ]);
+    
+    Route::get('/edit/{id}', [
+        'as' => 'users.edit',
+        'uses' => 'App\Http\Controllers\AdminUserController@edit'
+    ]);
+
+    Route::post('/update/{id}', [
+        'as' => 'users.update',
+        'uses' => 'App\Http\Controllers\AdminUserController@update'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'as' => 'users.delete',
+        'uses' => 'App\Http\Controllers\AdminUserController@delete'
+    ]);
+    
+
+    
+
+    
+
+    
+
+    
+});
+
+//Roles
+Route::prefix('roles')->group(function () {
+    Route::get('/', [
+        'as' => 'roles.index',
+        'uses' => 'App\Http\Controllers\AdminRoleController@index'
+    ]);
+
+    Route::get('/create', [
+        'as' => 'roles.create',
+        'uses' => 'App\Http\Controllers\AdminRoleController@create'
+    ]);
+
+
+    
+
+    
+
+    
+});
 
 
 
@@ -237,3 +295,7 @@ Route::prefix('settings')->group(function () {
 // Route::get('/admin', function() {
 //     return view('layouts.admin');
 // })
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

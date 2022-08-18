@@ -27,8 +27,8 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ route('settings.create') . "?type=Text" }}">Text</a></li>
-                                <li><a href="{{ route('settings.create') . "?type=Textarea" }}">Textarea</a></li>
+                                <li><a href="{{ route('settings.create') . '?type=Text' }}">Text</a></li>
+                                <li><a href="{{ route('settings.create') . '?type=Textarea' }}">Textarea</a></li>
                             </ul>
                         </div>
 
@@ -41,20 +41,21 @@
                                     <th scope="col">Config key</th>
                                     <th scope="col">Config value</th>
                                     <th scope="col">Action</th>
-                              
+
                                 </tr>
                             </thead>
                             <tbody>
 
                                 @foreach ($settings as $setting)
                                     <tr>
-                                        <th scope="row">{{ $setting->id}}</th>
-                                        <td>{{ $setting->config_key}}</td>
-                                        <td>{{ $setting->config_value}}</td>
+                                        <th scope="row">{{ $setting->id }}</th>
+                                        <td>{{ $setting->config_key }}</td>
+                                        <td>{{ $setting->config_value }}</td>
                                         <td>
-                                            <a href="{{ route('settings.edit', ['id' => $setting->id]). '?type=' . $setting->type }}"
+                                            <a href="{{ route('settings.edit', ['id' => $setting->id]) . '?type=' . $setting->type }}"
                                                 class="btn btn-default">Edit</a>
-                                            <a href="" data-url="{{ route('settings.delete', ['id' => $setting->id]) }}"
+                                            <a href="{{ route('settings.delete', ['id' => $setting->id]) }}"
+                                                data-url="{{ route('settings.delete', ['id' => $setting->id]) }}"
                                                 class="btn btn-danger action_delete">Delete</a>
                                         </td>
                                     </tr>
