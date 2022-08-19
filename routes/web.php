@@ -18,7 +18,8 @@ Route::prefix('admin')->group(function(){
     Route::prefix('categories')->group(function () {
         Route::get('/', [
             'as' => 'categories.index',
-            'uses' => 'App\Http\Controllers\CategoryController@index'
+            'uses' => 'App\Http\Controllers\CategoryController@index',
+            'middleware' => 'can:category-list'
         ]);
         
     Route::get('/create', [
@@ -86,7 +87,8 @@ Route::prefix('brands')->group(function () {
 Route::prefix('menus')->group(function () {
     Route::get('/', [
         'as' => 'menus.index',
-        'uses' => 'App\Http\Controllers\MenuController@index'
+        'uses' => 'App\Http\Controllers\MenuController@index',
+        'middleware' => 'can:menu-list'
     ]);
     
     Route::get('/create', [
@@ -272,7 +274,31 @@ Route::prefix('roles')->group(function () {
         'uses' => 'App\Http\Controllers\AdminRoleController@create'
     ]);
 
+    Route::post('/store', [
+        'as' => 'roles.store',
+        'uses' => 'App\Http\Controllers\AdminRoleController@store'
+    ]);
 
+    Route::get('/edit/{id}', [
+        'as' => 'roles.edit',
+        'uses' => 'App\Http\Controllers\AdminRoleController@edit'
+    ]);
+
+    Route::post('/update/{id}', [
+        'as' => 'roles.update',
+        'uses' => 'App\Http\Controllers\AdminRoleController@update'
+    ]);    
+});
+
+//Permission
+Route::prefix('permissions')->group(function () {
+
+    Route::get('/create', [
+        'as' => 'permissions.create',
+        'uses' => 'App\Http\Controllers\AdminRoleController@createPermissions'
+    ]);
+
+  
     
 
     
@@ -285,6 +311,9 @@ Route::prefix('roles')->group(function () {
 
 
 });
+
+
+
 
 
 
@@ -295,6 +324,10 @@ Route::prefix('roles')->group(function () {
 // Route::get('/admin', function() {
 //     return view('layouts.admin');
 // })
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

@@ -48,6 +48,21 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
     }
 
+    public function checkPermissionaccess($permissionCheck) {
 
+        //logged in user can add and edit category, and see menu list
+
+        //Step 1: retrieve Role data from logged-in user
+        $roles = auth()->user()->roles;
+        foreach ($roles as $role) {
+            $permissions = $role->permissions;
+            if ($permissions->contains('key_code', $permissionCheck)) {
+                return true;
+            }
+        }
+        return false;
+
+        //Step 2: compare with values set in Routers for existence of roles
+    }
 
 }
