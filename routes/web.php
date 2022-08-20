@@ -288,6 +288,11 @@ Route::prefix('roles')->group(function () {
         'as' => 'roles.update',
         'uses' => 'App\Http\Controllers\AdminRoleController@update'
     ]);    
+
+    Route::get('/delete/{id}', [
+        'as' => 'roles.delete',
+        'uses' => 'App\Http\Controllers\AdminRoleController@delete'
+    ]);
 });
 
 //Permission
@@ -295,7 +300,12 @@ Route::prefix('permissions')->group(function () {
 
     Route::get('/create', [
         'as' => 'permissions.create',
-        'uses' => 'App\Http\Controllers\AdminRoleController@createPermissions'
+        'uses' => 'App\Http\Controllers\AdminPermissionController@createPermissions'
+    ]);
+
+    Route::post('/store', [
+        'as' => 'permissions.store',
+        'uses' => 'App\Http\Controllers\AdminPermissionController@store'
     ]);
 
   

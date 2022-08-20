@@ -3,7 +3,7 @@
 @section('css')
     <link href="{{ asset('admins/misc/add/add.css') }}" rel="stylesheet" />
     <link href="{{ asset('vendors/select2/select2.min.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('admins/role/add/add.css') }}" />
+    <link href="{{ asset('admins/role/add/add.css') }}" rel="stylesheet" />
 @endsection
 
 

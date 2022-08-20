@@ -8,13 +8,21 @@ return [
     ],
     
     'table_module' => [
-        'categories',
-        'brands',
-        'sliders',
-        'products',
-        'settings',
-        'users',
-        'roles'
+        'Categories',
+        'Brands',
+        'Sliders',
+        'Products',
+        'Settings',
+        'Menus',
+        'Users',
+        'Roles'
+    ],
+
+    'module_children' => [
+        'List',
+        'Create',
+        'Edit',
+        'Delete'
     ]
 
 ]
