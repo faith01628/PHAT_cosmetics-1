@@ -2,8 +2,13 @@
 
 return [
     'access' => [
-        'list-category' => 'list_category',
-        'list-menu' => 'list_menu',
+        'list-category' => 'Categories_List',
+        'create-category' => 'Categories_Create',
+        'edit-category' => 'Categories_Edit',
+        'delete-category' => 'Categories_Delete',
+        'list-menu' => 'Menus_List',
+        'list-product' => 'Products_List',
+        'edit-product' => 'Products_Edit'
 
     ],
     
