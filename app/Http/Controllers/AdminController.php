@@ -8,7 +8,7 @@ class AdminController extends Controller
 {
     public function loginAdmin() {
         if (auth()->check()) {
-            redirect()->to('home');
+            redirect()->to('admin/home');
         }
         return view ('login');
     }
@@ -19,7 +19,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ], $remember)) {
-            return redirect()->to('home');
+            return redirect()->to('admin/home');
         }
     }
 

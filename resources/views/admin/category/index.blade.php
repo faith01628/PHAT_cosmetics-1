@@ -17,8 +17,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{ route('categories.create') }}" class="btn btn-success float-right m-2">Create new
-                            Category</a>
+                        @can('category-create')
+                            <a href="{{ route('categories.create') }}" class="btn btn-success float-right m-2">Create new Category</a>
+                        @endcan
                     </div>
                     <div class="col-md-12">
                         <table class="table">
@@ -35,11 +36,16 @@
                                         <th scope="row">{{ $category->id }}</th>
                                         <td>{{ $category->name }}</td>
                                         <td>
-                                            <a href="{{ route('categories.edit', ['id' => $category->id]) }}"
-                                                class="btn btn-default">Edit</a>
-                                            <a href{{ route('categories.delete', ['id' => $category->id]) }}
-                                                data-url="{{ route('categories.delete', ['id' => $category->id]) }}"
-                                                class="btn btn-danger action_delete">Delete</a>
+                                            @can('category-edit')
+                                                <a href="{{ route('categories.edit', ['id' => $category->id]) }}"
+                                                    class="btn btn-default">Edit</a>
+                                            @endcan
+                                            @can('category-delete')
+                                                <a href{{ route('categories.delete', ['id' => $category->id]) }}
+                                                    data-url="{{ route('categories.delete', ['id' => $category->id]) }}"
+                                                    class="btn btn-danger action_delete">Delete</a>
+                                            @endcan
+
                                         </td>
                                     </tr>
                                 @endforeach

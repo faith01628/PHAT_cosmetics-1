@@ -6,9 +6,19 @@ return [
         'create-category' => 'Categories_Create',
         'edit-category' => 'Categories_Edit',
         'delete-category' => 'Categories_Delete',
-        'list-menu' => 'Menus_List',
+
+        'list-brand' => 'Brands_List',
+        'create-brand' => 'Brands_Create',
+        'edit-brand' => 'Brands_Edit',
+        'delete-brand' => 'Brands_Delete',
+
         'list-product' => 'Products_List',
-        'edit-product' => 'Products_Edit'
+        'create-product' => 'Products_Create',
+        'edit-product' => 'Products_Edit',
+        'delete-product' => 'Products_Delete',
+
+        'list-menu' => 'Menus_List',
+        
 
     ],
     
