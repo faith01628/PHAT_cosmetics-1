@@ -1,124 +1,162 @@
-<!--header-->
-<div class="header_top">
-    <!--header_top-->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="contactinfo">
-                    <ul class="nav nav-pills">
-                        <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                        <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="social-icons pull-right">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--/header_top-->
-
-<div class="header-middle">
-    <!--header-middle-->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="logo pull-left">
-                    <a href="index.html"><img src="eshopper/images/home/logo.png" alt="" /></a>
-                </div>
-                <div class="btn-group pull-right">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                            USA
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Canada</a></li>
-                            <li><a href="#">UK</a></li>
+<header id="header">
+    <!--header-->
+    <div class="header_top">
+        <!--header_top-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="contactinfo">
+                        <ul class="nav nav-pills">
+                            <li><a href="#"><i class="fa fa-phone"></i> +84 000 000 000</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> admin@phat.com</a></li>
                         </ul>
                     </div>
-
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                            DOLLAR
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Canadian Dollar</a></li>
-                            <li><a href="#">Pound</a></li>
+                </div>
+                <div class="col-sm-6">
+                    <div class="social-icons pull-right">
+                        <ul class="nav navbar-nav">
+                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-8">
-                <div class="shop-menu pull-right">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-                        <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-                        <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                        <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                        <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
-</div>
-<!--/header-middle-->
+    <!--/header_top-->
 
-<div class="header-bottom">
-    <!--header-bottom-->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="mainmenu pull-left">
-                    <ul class="nav navbar-nav collapse navbar-collapse">
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                                <li><a href="shop.html">Products</a></li>
-                                <li><a href="product-details.html">Product Details</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="login.html">Login</a></li>
+    <div class="header-middle">
+        <!--header-middle-->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 clearfix">
+                    <div class="logo pull-left">
+                        <a href="{{ asset('user/home') }}"><img src="{{ asset('user/image/logo.png') }}" alt=""
+                                width="150px" /></a>
+                    </div>
+                    <div class="btn-group pull-right clearfix">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle vietnam"
+                                data-toggle="dropdown">
+                                Việt Nam
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="">English</a></li>
                             </ul>
-                        </li>
-                        <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                                <li><a href="blog.html">Blog List</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle vietnam"
+                                data-toggle="dropdown">
+                                VND
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="">DOLLAR</a></li>
                             </ul>
-                        </li>
-                        <li><a href="404.html">404</a></li>
-                        <li><a href="contact-us.html">Contact</a></li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="search_box pull-right">
-                    <input type="text" placeholder="Search" />
+                <div class="col-md-8 clearfix">
+                    <div class="shop-menu clearfix pull-right">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ asset('user/login') }}"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="{{ asset('user/register') }}"><i class="fa fa-user"></i> Register</a></li>
+                            <li><a href="{{ asset('user/checkout') }}"><i class="fa fa-crosshairs"></i> Checkout</a>
+                            </li>
+                            <li class="cart-shop"><a href="{{ url('List-Carts') }}">
+                                    <i class="fa fa-shopping-cart"></i> Cart
+                                    @if (Session::has('Cart') != null)
+                                        <span id="total-quanty-show">{{ Session::get('Cart')->totalQuanty }}</span>
+                                    @else
+                                        <span id="total-quanty-show">0</span>
+                                    @endif
+                                    </a>
+                                <div class="cart-hover">
+                                    <div id="change-item-cart">
+                                        @if (Session::has('Cart') != null)
+
+                                            <div class="select-items">
+                                                <table>
+                                                    <tbody>
+                                                        @foreach (Session::get('Cart')->products as $item)
+                                                            <tr>
+                                                                <td class="si-pic"><img
+                                                                        src="/user/image/{{ $item['productInfo']->img }}"
+                                                                        width="50%" alt=""></td>
+                                                                <td class="si-text">
+                                                                    <div class="product-selected">
+                                                                        <p>{{ number_format($item['productInfo']->price) }}₫
+                                                                            x {{ $item['quanty'] }}</p>
+                                                                        <h6>{{ $item['productInfo']->name }}</h6>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="si-close">
+                                                                    <i class="glyphicon glyphicon-remove"
+                                                                        data-id="{{ $item['productInfo']->product_id }}"></i>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="select-total">
+                                                <span>total:</span>
+                                                <h5>{{ number_format(Session::get('Cart')->totalPrice) }}₫</h5>
+                                            </div>
+
+                                        @endif
+                                        @if (Session::has('Cart') != null)
+                                            <div class="select-button">
+                                                <a href="{{ url('List-Carts') }}" class="primary-btn view-card">VIEW CARD</a>
+                                                <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
+                                            </div>
+                                        @endif
+
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="shop-menu pull-right">
+                        <ul class="nav navbar-nav">
+                            <div class="search_box pull-right">
+                                <input type="text" placeholder="Search" />
+                            </div>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!--/header-bottom-->
+    <!--/header-middle-->
+
+    <div class="header-bottom">
+        <!--header-bottom-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="mainmenu pull-left">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                            <li><a href="{{ asset('user/home') }}" class="active">Home</a></li>
+                            <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="#">Products</a></li>
+                                    <li><a href="#">Product Details</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="{{ asset('user/brand') }}">Brands</a></li>
+                            <li class="dropdown"><a href="#">News</a></li>
+                            <li class="dropdown"><a href="{{ asset('user/contact') }}">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/header-bottom-->
 </header>
 <!--/header-->

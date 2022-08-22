@@ -17,8 +17,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{ route('menus.create') }}" class="btn btn-success float-right m-2">Create new
-                            Menu</a>
+                        @can('menu-create')
+                            <a href="{{ route('menus.create') }}" class="btn btn-success float-right m-2">Create new
+                                Menu</a>
+                        @endcan
+
                     </div>
                     <div class="col-md-12">
                         <table class="table">
@@ -36,11 +39,15 @@
                                         <th scope="row">{{ $menu->id }}</th>
                                         <td>{{ $menu->name }}</td>
                                         <td>
-                                            <a href="{{ route('menus.edit', ['id' => $menu->id]) }}"
-                                                class="btn btn-default">Edit</a>
-                                            <a href="{{ route('menus.delete', ['id' => $menu->id]) }}"
-                                                data-url="{{ route('menus.delete', ['id' => $menu->id]) }}"
-                                                class="btn btn-danger action_delete">Delete</a>
+                                            @can('menu-edit')
+                                                <a href="{{ route('menus.edit', ['id' => $menu->id]) }}"
+                                                    class="btn btn-default">Edit</a>
+                                            @endcan
+                                            @can('menu-delete')
+                                                <a href="{{ route('menus.delete', ['id' => $menu->id]) }}"
+                                                    data-url="{{ route('menus.delete', ['id' => $menu->id]) }}"
+                                                    class="btn btn-danger action_delete">Delete</a>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach

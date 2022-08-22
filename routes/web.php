@@ -1,8 +1,16 @@
 <?php
 
+use App\Http\Controllers\CartController as ControllersCartController;
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\BrandController;
 
 
 // Homepage access
@@ -112,7 +120,8 @@ Route::prefix('menus')->group(function () {
     
     Route::get('/create', [
         'as' => 'menus.create',
-        'uses' => 'App\Http\Controllers\MenuController@create'
+        'uses' => 'App\Http\Controllers\MenuController@create',
+        'middleware' => 'can:menu-create'
     ]);
     
     Route::post('/store', [
@@ -122,7 +131,8 @@ Route::prefix('menus')->group(function () {
     
     Route::get('/edit/{id}', [
         'as' => 'menus.edit',
-        'uses' => 'App\Http\Controllers\MenuController@edit'
+        'uses' => 'App\Http\Controllers\MenuController@edit',
+        'middleware' => 'can:menu-list'
     ]);
 
     Route::post('/update/{id}', [
@@ -132,7 +142,8 @@ Route::prefix('menus')->group(function () {
 
     Route::get('/delete/{id}', [
         'as' => 'menus.delete',
-        'uses' => 'App\Http\Controllers\MenuController@delete'
+        'uses' => 'App\Http\Controllers\MenuController@delete',
+        'middleware' => 'can:menu-delete'
     ]);
 
 });
@@ -179,12 +190,14 @@ Route::prefix('products')->group(function () {
 Route::prefix('sliders')->group(function () {
     Route::get('/', [
         'as' => 'sliders.index',
-        'uses' => 'App\Http\Controllers\SliderAdminController@index'
+        'uses' => 'App\Http\Controllers\SliderAdminController@index',
+        'middleware' => 'can:slider-list'
     ]);
 
     Route::get('create', [
         'as' => 'sliders.create',
-        'uses' => 'App\Http\Controllers\SliderAdminController@create'
+        'uses' => 'App\Http\Controllers\SliderAdminController@create',
+        'middleware' => 'can:slider-create'
     ]);
 
     Route::post('store', [
@@ -194,7 +207,8 @@ Route::prefix('sliders')->group(function () {
 
     Route::get('edit/{id}', [
         'as' => 'sliders.edit',
-        'uses' => 'App\Http\Controllers\SliderAdminController@edit'
+        'uses' => 'App\Http\Controllers\SliderAdminController@edit',
+        'middleware' => 'can:slider-edit'
     ]);
 
     Route::post('update/{id}', [
@@ -204,7 +218,8 @@ Route::prefix('sliders')->group(function () {
 
     Route::get('delete/{id}', [
         'as' => 'sliders.delete',
-        'uses' => 'App\Http\Controllers\SliderAdminController@delete'
+        'uses' => 'App\Http\Controllers\SliderAdminController@delete',
+        'middleware' => 'can:slider-delete'
     ]);
 
 
@@ -214,12 +229,14 @@ Route::prefix('sliders')->group(function () {
 Route::prefix('settings')->group(function () {
     Route::get('/', [
         'as' => 'settings.index',
-        'uses' => 'App\Http\Controllers\AdminSettingsController@index'
+        'uses' => 'App\Http\Controllers\AdminSettingsController@index',
+        'middleware' => 'can:setting-list'
     ]);
     
     Route::get('/create', [
         'as' => 'settings.create',
-        'uses' => 'App\Http\Controllers\AdminSettingsController@create'
+        'uses' => 'App\Http\Controllers\AdminSettingsController@create',
+        'middleware' => 'can:setting-create'
     ]);
 
     Route::post('/store',[
@@ -229,7 +246,8 @@ Route::prefix('settings')->group(function () {
 
     Route::get('/edit/{id}', [
         'as' => 'settings.edit',
-        'uses' => 'App\Http\Controllers\AdminSettingsController@edit'
+        'uses' => 'App\Http\Controllers\AdminSettingsController@edit',
+        'middleware' => 'can:setting-edit'
     ]);
 
     Route::post('/update/{id}',[
@@ -239,7 +257,8 @@ Route::prefix('settings')->group(function () {
 
     Route::get('/delete/{id}', [
         'as' => 'settings.delete',
-        'uses' => 'App\Http\Controllers\AdminSettingsController@delete'
+        'uses' => 'App\Http\Controllers\AdminSettingsController@delete',
+        'middleware' => 'can:setting-delete'
     ]);
 });
 
@@ -247,12 +266,14 @@ Route::prefix('settings')->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/', [
         'as' => 'users.index',
-        'uses' => 'App\Http\Controllers\AdminUserController@index'
+        'uses' => 'App\Http\Controllers\AdminUserController@index',
+        'middleware' => 'can:user-list'
     ]);
 
     Route::get('/create', [
         'as' => 'users.create',
-        'uses' => 'App\Http\Controllers\AdminUserController@create'
+        'uses' => 'App\Http\Controllers\AdminUserController@create',
+        'middleware' => 'can:user-create'
     ]);
 
     Route::post('/store', [
@@ -262,7 +283,8 @@ Route::prefix('users')->group(function () {
     
     Route::get('/edit/{id}', [
         'as' => 'users.edit',
-        'uses' => 'App\Http\Controllers\AdminUserController@edit'
+        'uses' => 'App\Http\Controllers\AdminUserController@edit',
+        'middleware' => 'can:user-edit'
     ]);
 
     Route::post('/update/{id}', [
@@ -272,12 +294,9 @@ Route::prefix('users')->group(function () {
 
     Route::get('/delete/{id}', [
         'as' => 'users.delete',
-        'uses' => 'App\Http\Controllers\AdminUserController@delete'
+        'uses' => 'App\Http\Controllers\AdminUserController@delete',
+        'middleware' => 'can:user-delete'
     ]);
-    
-
-    
-
     
 
     
@@ -289,12 +308,14 @@ Route::prefix('users')->group(function () {
 Route::prefix('roles')->group(function () {
     Route::get('/', [
         'as' => 'roles.index',
-        'uses' => 'App\Http\Controllers\AdminRoleController@index'
+        'uses' => 'App\Http\Controllers\AdminRoleController@index',
+        'middleware' => 'can:role-list'
     ]);
 
     Route::get('/create', [
         'as' => 'roles.create',
-        'uses' => 'App\Http\Controllers\AdminRoleController@create'
+        'uses' => 'App\Http\Controllers\AdminRoleController@create',
+        'middleware' => 'can:role-create'
     ]);
 
     Route::post('/store', [
@@ -304,7 +325,8 @@ Route::prefix('roles')->group(function () {
 
     Route::get('/edit/{id}', [
         'as' => 'roles.edit',
-        'uses' => 'App\Http\Controllers\AdminRoleController@edit'
+        'uses' => 'App\Http\Controllers\AdminRoleController@edit',
+        'middleware' => 'can:role-edit'
     ]);
 
     Route::post('/update/{id}', [
@@ -314,7 +336,8 @@ Route::prefix('roles')->group(function () {
 
     Route::get('/delete/{id}', [
         'as' => 'roles.delete',
-        'uses' => 'App\Http\Controllers\AdminRoleController@delete'
+        'uses' => 'App\Http\Controllers\AdminRoleController@delete',
+        'middleware' => 'can:role-delete'
     ]);
 });
 
@@ -323,25 +346,49 @@ Route::prefix('permissions')->group(function () {
 
     Route::get('/create', [
         'as' => 'permissions.create',
-        'uses' => 'App\Http\Controllers\AdminPermissionController@createPermissions'
-    ]);
-
+        'uses' => 'App\Http\Controllers\AdminPermissionController@createPermissions',
+    ]); // 'middleware' => 'can:permission-create'
+    
     Route::post('/store', [
         'as' => 'permissions.store',
         'uses' => 'App\Http\Controllers\AdminPermissionController@store'
     ]);
+   
+});
 
-  
-    
 
-    
-
-    
 });
 
 
 
 
+Route::prefix('user')->name('user')->group(function(){
+
+    Route::get('home', [HomeController::class, 'home'])->name('home');
+
+    Route::get('login', [LoginController::class, 'login'])->name('login');
+
+    Route::post('postLogin', [LoginController::class, 'postLogin'])->name('postLogin');
+
+    Route::get('register', [LoginController::class, 'register'])->name('register');
+
+    Route::post('postRegister', [LoginController::class, 'postRegister'])->name('postRegister');
+
+    Route::get('cart', [CartController::class, 'cart'])->name('cart');
+
+    Route::get('checkout', [CheckOutController::class, 'checkout'])->name('checkout');
+
+    Route::get('contact', [ContactController::class, 'contact'])->name('contact');
+
+    Route::get('brand', [BrandController::class, 'brand'])->name('brand');
 
 });
+
+
+Route::get('/user/home','App\Http\Controllers\CartController@index');
+Route::get('/Add-Cart/{id}','App\Http\Controllers\CartController@AddCart');
+Route::get('/Delete-Item-Cart/{id}','App\Http\Controllers\CartController@DeleteItemCart');
+Route::get('/List-Carts','App\Http\Controllers\CartController@ViewListCart');
+Route::get('/Delete-Item-List-Cart/{id}','App\Http\Controllers\CartController@DeleteListItemCart');
+Route::get('/Save-Item-List-Cart/{id}/{quantity}','App\Http\Controllers\CartController@SaveListItemCart');
 

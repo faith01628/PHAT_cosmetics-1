@@ -28,9 +28,9 @@ class MenuPolicy
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Menu $menu)
+    public function view(User $user)
     {
-        //
+        return $user->checkPermissionaccess('Menus_List');
     }
 
     /**
@@ -41,7 +41,7 @@ class MenuPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->checkPermissionaccess('Menus_Create');
     }
 
     /**
@@ -51,9 +51,9 @@ class MenuPolicy
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Menu $menu)
+    public function update(User $user)
     {
-        //
+        return $user->checkPermissionaccess('Menus_Edit');
     }
 
     /**
@@ -63,9 +63,9 @@ class MenuPolicy
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Menu $menu)
+    public function delete(User $user)
     {
-        //
+        return $user->checkPermissionaccess('Menus_Delete');
     }
 
     /**

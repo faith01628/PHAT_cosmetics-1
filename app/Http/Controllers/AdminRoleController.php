@@ -20,7 +20,7 @@ class AdminRoleController extends Controller
     }
 
     public function index() {
-        $roles = $this->role->paginate(10);
+        $roles = $this->role->simplePaginate(10);
         return view('admin.role.index', compact('roles'));
 
     }

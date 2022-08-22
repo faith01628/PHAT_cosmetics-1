@@ -21,8 +21,10 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{ route('products.create') }}" class="btn btn-success float-right m-2">Add new
-                            Product</a>
+                        @can('product-create')
+                            <a href="{{ route('products.create') }}" class="btn btn-success float-right m-2">Add new
+                                Product</a>
+                        @endcan
                     </div>
                     <div class="col-md-12">
                         <table class="table">
@@ -53,6 +55,7 @@
                                         <td>
                                             <a href="{{ route('products.edit', ['id' => $productItem->id]) }}"
                                                 class="btn btn-default">Edit</a>
+
                                             <a href=" {{ route('products.delete', ['id' => $productItem->id]) }}"
                                                 data-url="{{ route('products.delete', ['id' => $productItem->id]) }}"
                                                 class="btn btn-danger action_delete">Delete</a>

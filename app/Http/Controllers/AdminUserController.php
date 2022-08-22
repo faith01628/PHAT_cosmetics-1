@@ -22,7 +22,7 @@ class AdminUserController extends Controller
     }
 
     public function index() {
-        $users = $this->user->paginate(10);
+        $users = $this->user->simplePaginate(10);
         return view('admin.user.index', compact('users'));
     }
 

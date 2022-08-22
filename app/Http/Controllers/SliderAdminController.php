@@ -20,7 +20,7 @@ class SliderAdminController extends Controller
     }
     
     public function index() {
-        $sliders= $this->slider->latest()->paginate(5); 
+        $sliders= $this->slider->latest()->simplePaginate(5); 
         return view('admin.slider.index', compact('sliders'));
     }
     

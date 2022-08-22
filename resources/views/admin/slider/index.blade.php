@@ -21,7 +21,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <a href="{{ route('sliders.create') }}" class="btn btn-success float-right m-2">Create Slider</a>
+                        @can('slider-create')
+                            <a href="{{ route('sliders.create') }}" class="btn btn-success float-right m-2">Create Slider</a>
+                        @endcan
                     </div>
                     <div class="col-md-12">
                         <table class="table">
@@ -44,11 +46,15 @@
                                         <td><img src="{{ $slider->image_path }}" alt=""
                                                 class="image_slider_150_100"></td>
                                         <td>
-                                            <a href="{{ route('sliders.edit', $slider->id) }}"
-                                                class="btn btn-default">Edit</a>
-                                            <a href="{{ route('sliders.delete', $slider->id) }}"
-                                                data-url="{{ route('sliders.delete', $slider->id) }}"
-                                                class="btn btn-danger action_delete">Delete</a>
+                                            @can('slider-edit')
+                                                <a href="{{ route('sliders.edit', $slider->id) }}"
+                                                    class="btn btn-default">Edit</a>
+                                            @endcan
+                                            @can('slider-delete')
+                                                <a href="{{ route('sliders.delete', $slider->id) }}"
+                                                    data-url="{{ route('sliders.delete', $slider->id) }}"
+                                                    class="btn btn-danger action_delete">Delete</a>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
