@@ -16,7 +16,7 @@
                     <div class="social-icons pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="{{ getconfigValuefromSettings('facebook_link') }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="{{ getconfigValuefromSettings('linked_link') }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="{{ getconfigValuefromSettings('linkedin_link') }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                             <li><a href="{{ getconfigValuefromSettings('twitter_link') }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="{{ getconfigValuefromSettings('instagram') }}" target="_blank"><i class="fa fa-instagram"></i></a></li>
                         </ul>

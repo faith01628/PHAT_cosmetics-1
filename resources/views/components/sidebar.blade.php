@@ -1,6 +1,6 @@
 <div class="col-sm-3">
     <div class="left-sidebar">
-        <h2>Category</h2>
+        <h2>Categories</h2>
         <div class="panel-group category-products" id="accordian">
             <!--category-productsr-->
 
@@ -8,14 +8,21 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordian" href="#category_{{ $category->id }}">
-                                <span class="badge pull-right">
-                                    @if ($category->categoryChildren->count())
+                            @if ($category->categoryChildren->count())
+                                <a data-toggle="collapse" data-parent="#accordian" href="#category_{{ $category->id }}">
+                                    <span class="badge pull-right">
                                         <i class="fa fa-plus"></i>
-                                    @endif
-                                </span>
-                                {{ $category->name }}
-                            </a>
+                                    </span>
+                                    {{ $category->name }}
+                                </a>
+                            @else
+                                <a
+                                    href="{{ route('category.product', ['slug' => $categoryChild->slug, 'id' => $categoryChild->id]) }}">
+                                    <span class="badge pull-right">
+                                    </span>
+                                    {{ $category->name }}
+                                </a>
+                            @endif
                         </h4>
                     </div>
 
@@ -23,7 +30,10 @@
                         <div class="panel-body">
                             <ul>
                                 @foreach ($category->categoryChildren as $categoryChild)
-                                    <li><a href="#">{{ $categoryChild->name }}</a></li>
+                                    <li>
+                                        <a
+                                            href="{{ route('category.product', ['slug' => $categoryChild->slug, 'id' => $categoryChild->id]) }}">{{ $categoryChild->name }}</a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -43,9 +53,8 @@
                 <ul class="nav nav-pills nav-stacked">
 
                     @foreach ($brands as $brand)
-                        <li><a href="#"><span class="pull-right">(50)</span>{{ $brand->name }}</a></li>
+                        <li><a href="{{ route('brand.product', ['slug' => $brand->slug, 'id' => $brand->id]) }}"><span class="pull-right">(50)</span>{{ $brand->name }}</a></li>
                     @endforeach
-
 
                 </ul>
             </div>

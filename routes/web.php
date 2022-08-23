@@ -15,7 +15,14 @@ use App\Http\Controllers\BrandController;
 
 // Homepage access
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
-
+Route::get('/category/{slug}/{id}', [
+    'as' => 'category.product',
+    'uses' => 'App\Http\Controllers\ProductShowController@category',
+]);
+Route::get('/brand/{slug}/{id}', [
+    'as' => 'brand.product',
+    'uses' => 'App\Http\Controllers\ProductShowController@brand',
+]);
 
 // Route::get('/cart',)
 
