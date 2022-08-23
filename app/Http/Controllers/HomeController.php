@@ -37,7 +37,8 @@ class HomeController extends Controller
         $brands = Brand::latest()->get();
         $products = Product::latest()->take(6)->get();
         $productRecommend = Product::latest('views_count', 'desc')->take(12)->get();
-        return view('home.home', compact('sliders', 'categories', 'brands', 'products', 'productRecommend'));
+        $categoryMenus = Category::where('parent_id', 0)->take(3)->get();
+        return view('home.home', compact('sliders', 'categories', 'brands', 'products', 'productRecommend', 'categoryMenus'));
     }
 
 

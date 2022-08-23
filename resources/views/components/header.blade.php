@@ -7,16 +7,18 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="#"><i class="fa fa-phone"></i> +84 000 000 000</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> admin@phat.com</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i> {{ getConfigValuefromSettings('phone_no')}}</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> {{ getconfigValuefromSettings('Email') }}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="social-icons pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="{{ getconfigValuefromSettings('facebook_link') }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="{{ getconfigValuefromSettings('linked_link') }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="{{ getconfigValuefromSettings('twitter_link') }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="{{ getconfigValuefromSettings('instagram') }}" target="_blank"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -139,20 +141,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9">
-                    <div class="mainmenu pull-left">
-                        <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="{{ asset('user/home') }}" class="active">Home</a></li>
-                            <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li><a href="#">Products</a></li>
-                                    <li><a href="#">Product Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="{{ asset('user/brand') }}">Brands</a></li>
-                            <li class="dropdown"><a href="#">News</a></li>
-                            <li class="dropdown"><a href="{{ asset('user/contact') }}">Contact</a></li>
-                        </ul>
-                    </div>
+                    <<!--main-menu-->
+                    @include('components.main-menu')
+                    <<!--/main-menu-->
                 </div>
             </div>
         </div>
