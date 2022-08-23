@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('carts', function (Blueprint $table) {
-            $table->bigIncrements('cart_id');
-            $table->string('name');
-            $table->bigInteger('price');
-            $table->string('img');
+            $table->id();
+            $table->string('user_id');
+            $table->string('prod_id');
+            $table->string('prod_qty');
             $table->timestamps();
         });
     }

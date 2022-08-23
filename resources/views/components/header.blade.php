@@ -7,18 +7,24 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="#"><i class="fa fa-phone"></i> {{ getConfigValuefromSettings('phone_no')}}</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> {{ getconfigValuefromSettings('Email') }}</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>
+                                    {{ getConfigValuefromSettings('phone_no') }}</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i>
+                                    {{ getconfigValuefromSettings('Email') }}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="social-icons pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ getconfigValuefromSettings('facebook_link') }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="{{ getconfigValuefromSettings('linkedin_link') }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="{{ getconfigValuefromSettings('twitter_link') }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="{{ getconfigValuefromSettings('instagram') }}" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="{{ getconfigValuefromSettings('facebook_link') }}" target="_blank"><i
+                                        class="fa fa-facebook"></i></a></li>
+                            <li><a href="{{ getconfigValuefromSettings('linkedin_link') }}" target="_blank"><i
+                                        class="fa fa-linkedin"></i></a></li>
+                            <li><a href="{{ getconfigValuefromSettings('twitter_link') }}" target="_blank"><i
+                                        class="fa fa-twitter"></i></a></li>
+                            <li><a href="{{ getconfigValuefromSettings('instagram') }}" target="_blank"><i
+                                        class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -62,63 +68,24 @@
                 </div>
                 <div class="col-md-8 clearfix">
                     <div class="shop-menu clearfix pull-right">
-                        <ul class="nav navbar-nav">
-                            <li><a href="{{ asset('user/login') }}"><i class="fa fa-lock"></i> Login</a></li>
-                            <li><a href="{{ asset('user/register') }}"><i class="fa fa-user"></i> Register</a></li>
-                            <li><a href="{{ asset('user/checkout') }}"><i class="fa fa-crosshairs"></i> Checkout</a>
-                            </li>
-                            <li class="cart-shop"><a href="{{ url('List-Carts') }}">
-                                    <i class="fa fa-shopping-cart"></i> Cart
-                                    @if (Session::has('Cart') != null)
-                                        <span id="total-quanty-show">{{ Session::get('Cart')->totalQuanty }}</span>
-                                    @else
-                                        <span id="total-quanty-show">0</span>
-                                    @endif
+                        <ul class="navbar-nav ml-auto">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">My Profile</a>
+                                    <a class="dropdown-item" href="{{ URL::to('/logout') }}">
+                                        {{ __('Logout') }}
+
                                     </a>
-                                <div class="cart-hover">
-                                    <div id="change-item-cart">
-                                        @if (Session::has('Cart') != null)
-
-                                            <div class="select-items">
-                                                <table>
-                                                    <tbody>
-                                                        @foreach (Session::get('Cart')->products as $item)
-                                                            <tr>
-                                                                <td class="si-pic"><img
-                                                                        src="/user/image/{{ $item['productInfo']->img }}"
-                                                                        width="50%" alt=""></td>
-                                                                <td class="si-text">
-                                                                    <div class="product-selected">
-                                                                        <p>{{ number_format($item['productInfo']->price) }}₫
-                                                                            x {{ $item['quanty'] }}</p>
-                                                                        <h6>{{ $item['productInfo']->name }}</h6>
-                                                                    </div>
-                                                                </td>
-                                                                <td class="si-close">
-                                                                    <i class="glyphicon glyphicon-remove"
-                                                                        data-id="{{ $item['productInfo']->product_id }}"></i>
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="select-total">
-                                                <span>total:</span>
-                                                <h5>{{ number_format(Session::get('Cart')->totalPrice) }}₫</h5>
-                                            </div>
-
-                                        @endif
-                                        @if (Session::has('Cart') != null)
-                                            <div class="select-button">
-                                                <a href="{{ url('List-Carts') }}" class="primary-btn view-card">VIEW CARD</a>
-                                                <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
-                                            </div>
-                                        @endif
-
-                                    </div>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
+                                        @csrf
+                                    </form>
                                 </div>
-                            </li>
+                            </div>
                         </ul>
                     </div>
                 </div>
@@ -141,9 +108,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9">
-                    <<!--main-menu-->
+                    <!--main-menu-->
                     @include('components.main-menu')
-                    <<!--/main-menu-->
+                    <!--/main-menu-->
                 </div>
             </div>
         </div>

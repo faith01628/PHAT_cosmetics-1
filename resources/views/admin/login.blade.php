@@ -20,7 +20,7 @@
         #login .container #login-row #login-column #login-box {
             margin-top: 120px;
             max-width: 600px;
-            height: 320px;
+            height: 400px;
             border: 1px solid #9C9C9C;
             background-color: #EAEAEA;
         }
@@ -32,6 +32,13 @@
         #login .container #login-row #login-column #login-box #login-form #register-link {
             margin-top: -85px;
         }
+
+        span.text-alert {
+            color: red;
+            font-size: 17px;
+            width: 100%;
+            font-weight: bold;
+        }
     </style>
 
 </head>
@@ -41,13 +48,25 @@
 <body>
     <div id="login">
         <h3 class="text-center text-white pt-5">Login form</h3>
+
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
+                        <h3 class="text-center text-info mt-2">Login</h3>
+                        <div class="text-center">
+                            <?php
+                            $message = session()->get('message');
+                            if ($message) {
+                                echo '<span class="text-alert">' . $message . '</span>';
+                                session()->put('message', null);
+                            }
+                            ?>
+                        </div>
+                       
                         <form id="login-form" class="form" action="" method="post">
                             @csrf
-                            <h3 class="text-center text-info">Login</h3>
+
                             <div class="form-group">
                                 <label for="username" class="text-info">Username:</label><br>
                                 <input type="text" name="email" id="username" class="form-control">
@@ -61,7 +80,7 @@
                                             id="remember-me" name="remember_me" type="checkbox"></span></label><br>
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
                             </div>
-                            
+
                         </form>
                     </div>
                 </div>

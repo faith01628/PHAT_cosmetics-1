@@ -8,7 +8,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        @include('partials.content-header', ['name' => 'Home', 'key' => 'home'])
+        @include('admin.partials.content-header', ['name' => 'Home', 'key' => 'Page'])
         <!-- /.content-header -->
 
         <!-- Main content -->
@@ -17,7 +17,7 @@
                 <div class="row">
                
                     <div class="col-md-12">
-                        Homepage
+                        <h3>Welcome to admin dashboard!</h3>
                     </div>
                     
                 </div>

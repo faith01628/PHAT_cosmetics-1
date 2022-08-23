@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class ProductShowController extends Controller
 {
+
     public function category($slug, $categoryId) {
         $categories = Category::where('parent_id', 0)->get();
         $brands = Brand::latest()->get();
@@ -24,4 +25,18 @@ class ProductShowController extends Controller
         $products = Product::where('brand_id', $brandId)->paginate(6);
         return view('products.brand.list', compact('categoryMenus', 'products', 'categories', 'brands'));
     }
+    
+
+    public function productDetails($id) {
+        $products = Product::all();
+        $product = Product::where('id', $id)->first();
+        $categories = Category::where('parent_id', 0)->get();
+        $brands = Brand::latest()->get();
+        $categoryMenus = Category::where('parent_id', 0)->take(3)->get();
+        $productRecommend = Product::latest('views_count', 'desc')->take(12)->get();
+        return view('products.product.productDetails', compact('categoryMenus', 'categories', 'brands', 'productRecommend', 'product', 'products'));
+    }  
+
+
+      
 }

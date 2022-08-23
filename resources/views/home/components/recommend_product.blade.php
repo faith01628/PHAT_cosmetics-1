@@ -5,33 +5,33 @@
 
             @foreach ($productRecommend as $keyRec => $productRecommendItem)
                 @if ($keyRec % 3 == 0)
-                    <div class="item {{$keyRec == 0 ? 'active' : ''}}">
+                    <div class="item {{ $keyRec == 0 ? 'active' : '' }}">
                 @endif
-                    <div class="col-sm-4">
+                <div class="col-sm-4">
+                    <a href="{{ route('detail.product', $productRecommendItem->id) }}">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                     <img src="{{ $productRecommendItem->featured_image_path }}" alt="" />
                                     <h2>${{ number_format($productRecommendItem->price) }}</h2>
                                     <p>{{ $productRecommendItem->name }}</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i
-                                            class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
+                </div>
 
                 @if ($keyRec % 3 == 2)
-                    </div>
-                @endif
-            @endforeach
-
         </div>
-        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-            <i class="fa fa-angle-left"></i>
-        </a>
-        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-            <i class="fa fa-angle-right"></i>
-        </a>
+        @endif
+        @endforeach
+
     </div>
+    <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+        <i class="fa fa-angle-left"></i>
+    </a>
+    <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+        <i class="fa fa-angle-right"></i>
+    </a>
+</div>
 </div>

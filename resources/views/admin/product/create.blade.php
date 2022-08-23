@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="content-wrapper">
-        @include('partials.content-header', ['name' => 'Product', 'key' => 'Create'])
+        @include('admin.partials.content-header', ['name' => 'Product', 'key' => 'Create'])
 
         {{-- 1st option to push error messages --}}
         {{-- @if ($errors->any())

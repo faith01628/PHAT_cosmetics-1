@@ -10,7 +10,7 @@
 @endsection
 @section('content')
     <div class="content-wrapper">
-        @include('partials.content-header', ['name' => 'Slider', 'key' => 'Edit'])
+        @include('admin.partials.content-header', ['name' => 'Slider', 'key' => 'Edit'])
 
         <div class="content">
             <div class="container-fluid">

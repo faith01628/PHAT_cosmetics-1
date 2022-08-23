@@ -25,10 +25,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function admin()
-    {
-        return view('admin.home');
-    }
+
 
     public function index()
     {
@@ -40,11 +37,6 @@ class HomeController extends Controller
         $categoryMenus = Category::where('parent_id', 0)->take(3)->get();
         return view('home.home', compact('sliders', 'categories', 'brands', 'products', 'productRecommend', 'categoryMenus'));
     }
-
-
-
-
-
 
 
 

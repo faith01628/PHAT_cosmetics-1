@@ -18,7 +18,7 @@
 @endsection
 @section('content')
     <div class="content-wrapper">
-        @include('partials.content-header', ['name' => 'Roles', 'key' => 'Edit'])
+        @include('admin.partials.content-header', ['name' => 'Roles', 'key' => 'Edit'])
 
         <div class="content">
             <div class="container-fluid">

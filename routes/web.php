@@ -4,7 +4,7 @@ use App\Http\Controllers\CartController as ControllersCartController;
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Middleware\VerifyCsrfToken;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CartController;
@@ -13,8 +13,14 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BrandController;
 
 
-// Homepage access
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+// Frontend 
+Auth::routes();
+
+Route::get('/', [
+    'as' => 'home',
+    'uses' => 'App\Http\Controllers\HomeController@index',
+]);
+
 Route::get('/category/{slug}/{id}', [
     'as' => 'category.product',
     'uses' => 'App\Http\Controllers\ProductShowController@category',
@@ -23,61 +29,35 @@ Route::get('/brand/{slug}/{id}', [
     'as' => 'brand.product',
     'uses' => 'App\Http\Controllers\ProductShowController@brand',
 ]);
+Route::get('/product/{id}', [
+    'as' => 'detail.product',
+    'uses' => 'App\Http\Controllers\ProductShowController@productDetails',
+]);
 
-// Route::get('/cart',)
+Route::post('add-to-cart', [CartController::class, 'addProduct']);
 
-
-
-Route::prefix('user')->name('user')->group(function(){
-
-    Route::get('home', [HomeController::class, 'home'])->name('home');
-
-    Route::get('login', [LoginController::class, 'login'])->name('login');
-
-    Route::post('postLogin', [LoginController::class, 'postLogin'])->name('postLogin');
-
-    Route::get('register', [LoginController::class, 'register'])->name('register');
-
-    Route::post('postRegister', [LoginController::class, 'postRegister'])->name('postRegister');
-
-    Route::get('cart', [CartController::class, 'cart'])->name('cart');
-
-    Route::get('checkout', [CheckOutController::class, 'checkout'])->name('checkout');
-
-    Route::get('contact', [ContactController::class, 'contact'])->name('contact');
-
-    Route::get('brand', [BrandController::class, 'brand'])->name('brand');
-
+Route::middleware(['auth'])->group(function() {
+    
 });
 
 
-Route::get('/user/home','App\Http\Controllers\CartController@index');
-Route::get('/Add-Cart/{id}','App\Http\Controllers\CartController@AddCart');
-Route::get('/Delete-Item-Cart/{id}','App\Http\Controllers\CartController@DeleteItemCart');
-Route::get('/List-Carts','App\Http\Controllers\CartController@ViewListCart');
-Route::get('/Delete-Item-List-Cart/{id}','App\Http\Controllers\CartController@DeleteListItemCart');
-Route::get('/Save-Item-List-Cart/{id}/{quantity}','App\Http\Controllers\CartController@SaveListItemCart');
 
 
 
+// Backend
 
-
-
-// For admin access
+//Admin Log in
 Route::get('/admin', 'App\Http\Controllers\AdminController@loginAdmin');
 Route::post('/admin', 'App\Http\Controllers\AdminController@postLoginAdmin');
-
-Route::get('/admin/home', function(){
-    return view('admin.home');
-});
-
-Auth::routes();
-
-Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin/home');
+Route::get('/admin/home', 'App\Http\Controllers\AdminController@admin');
+Route::get('/logout', 'App\Http\Controllers\AdminController@logoutAdmin');
 
 
 
 
+
+
+// Admin Dashboard
 Route::prefix('admin')->group(function(){
 
     //Category
@@ -404,7 +384,3 @@ Route::prefix('admin')->group(function(){
 
 
 });
-
-
-
-

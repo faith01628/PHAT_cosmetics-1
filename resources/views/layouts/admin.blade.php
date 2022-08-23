@@ -21,8 +21,8 @@
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        @include('partials.header')
-        @include('partials.sidebar')
+        @include('admin.partials.header')
+        @include('admin.partials.sidebar')
 
         @yield('content')
 
@@ -30,7 +30,7 @@
 
 
 
-        @include('partials.footer')
+        @include('admin.partials.footer')
     </div>
     <!-- jQuery -->
     <script src="  {{ asset('adminlte/plugins/jquery/jquery.min.js') }} "></script>

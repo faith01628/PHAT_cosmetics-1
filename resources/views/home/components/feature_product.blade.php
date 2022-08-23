@@ -8,25 +8,18 @@
                         <img src="{{ $product->featured_image_path }}" alt="" />
                         <h2>${{ number_format($product->price) }}</h2>
                         <p>{{ $product->name }}</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i
-                                class="fa fa-shopping-cart"></i>Add to cart</a>
                     </div>
+                    <a href="{{ route('detail.product', $product->id) }}" class="product_details">
                     <div class="product-overlay">
                         <div class="overlay-content">
                             <h2>${{ number_format($product->price) }}</h2>
                             <p>{{ $product->name }}</p>
-                            <a href="#" class="btn btn-default add-to-cart"><i
-                                    class="fa fa-shopping-cart"></i>Add to cart</a>
+                           
                         </div>
                     </div>
+                    </a>
                 </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                    </ul>
-                </div>
+               
             </div>
         </div>
     @endforeach
