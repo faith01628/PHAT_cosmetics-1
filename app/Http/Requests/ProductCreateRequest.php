@@ -24,7 +24,7 @@ class ProductCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:products|max:255|min:10',
+            'name' => 'required|unique:products|max:255|min:5',
             'price' => 'required',
             'category_id' => 'required',
             'brand_id' => 'required',
@@ -37,7 +37,7 @@ class ProductCreateRequest extends FormRequest
             'name.required' => 'Name cannot be blank', 
             'name.unique' => 'Name must be unique',
             'name.max' => 'Name cannot be longer than 255 characters',
-            'name.min' => 'Name cannot be shorter than 10 characters',
+            'name.min' => 'Name cannot be shorter than 5 characters',
             'price.required' => 'Price cannot be blank',
             'category_id.required' => 'Category cannot be blank',
             'brand_id.required' => 'Brand cannot be blank',

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
@@ -35,4 +37,13 @@ class CartController extends Controller
             return response()->json(['status' => "Login to Continue"]);
         }
     }
+
+    public function viewCart() {
+        $categoryMenus = Category::where('parent_id', 0)->take(3)->get();
+
+        $cartItems = Cart::where('user_id', Auth::id())->get();
+        return view('cart.view', compact('cartItems','categoryMenus'));
+
+    }
+
 }

@@ -20,8 +20,8 @@
         @endforeach
 
 
-        <li class="dropdown"><a href="{{ asset('user/brand') }}">Brands</a></li>
+        {{-- <li class="dropdown"><a href="{{ asset('user/brand') }}">Brands</a></li> --}}
         <li class="dropdown"><a href="#">News</a></li>
-        <li class="dropdown"><a href="{{ asset('user/contact') }}">Contact</a></li>
+        {{-- <li class="dropdown"><a href="{{ asset('user/contact') }}">Contact</a></li> --}}
     </ul>
 </div>

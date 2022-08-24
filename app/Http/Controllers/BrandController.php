@@ -15,7 +15,7 @@ class BrandController extends Controller
     }
 
     public function index() {
-        $brands = $this->brand->latest()->simplePaginate(5);
+        $brands = $this->brand->latest()->Paginate(5);
         return view('admin.brand.index', compact('brands'));
     }
 

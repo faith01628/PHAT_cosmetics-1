@@ -18,7 +18,7 @@ class MenuController extends Controller
     }
 
     public function index() {
-      $menus = $this->menu->latest()->simplePaginate(10);
+      $menus = $this->menu->latest()->Paginate(10);
       return view('admin.menu.index', compact('menus'));
     }
 

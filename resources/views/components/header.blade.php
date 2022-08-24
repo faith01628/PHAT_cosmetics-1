@@ -23,7 +23,7 @@
                                         class="fa fa-linkedin"></i></a></li>
                             <li><a href="{{ getconfigValuefromSettings('twitter_link') }}" target="_blank"><i
                                         class="fa fa-twitter"></i></a></li>
-                            <li><a href="{{ getconfigValuefromSettings('instagram') }}" target="_blank"><i
+                            <li><a href="{{ getconfigValuefromSettings('instagram_link') }}" target="_blank"><i
                                         class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
@@ -66,6 +66,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-8 clearfix">
                     <div class="shop-menu clearfix pull-right">
                         <ul class="navbar-nav ml-auto">
@@ -76,6 +77,8 @@
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="#">My Profile</a>
+                                    <a class="dropdown-item" href="{{ url('cart') }}">My Cart</a>
+
                                     <a class="dropdown-item" href="{{ URL::to('/logout') }}">
                                         {{ __('Logout') }}
 

@@ -17,7 +17,7 @@ class AdminSettingsController extends Controller
     }
     
     public function index() {
-        $settings = $this->setting->latest()->simplePaginate(5);
+        $settings = $this->setting->latest()->Paginate(5);
         return view('admin.setting.index', compact('settings'));
     }
 

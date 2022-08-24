@@ -44,7 +44,7 @@
                                     <tr>
                                         <th>{{ $productItem->id }}</th>
                                         <th>{{ $productItem->name }}</th>
-                                        <th>{{ $productItem->price }}</th>
+                                        <th>$ {{ number_format($productItem->price) }}</th>
                                         <th>
                                             <img class="product_images_150_150"
                                                 src="{{ $productItem->featured_image_path }}" alt="">
