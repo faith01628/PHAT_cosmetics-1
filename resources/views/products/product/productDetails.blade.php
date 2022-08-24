@@ -65,11 +65,11 @@
                                         <div class="col-md-3">
                                             <input type="hidden" value="{{ $product->id }}" class="prod_id">
                                             <label>Quantity:</label>
-                                            <div class="input-group text-center mb-3" style="130px">
-                                                <button class="input-group-text decrement-btn">-</button>
+                                            <div class="input-group text-center mb-3" style="width:130px">
+                                                <button class="input-group-text increment-btn">+</button>
                                                 <input type="text" name="quantity" value="1"
                                                     class="form-control text-center qty-input" />
-                                                <button class="input-group-text increment-btn">+</button>
+                                                <button class="input-group-text decrement-btn">-</button>
                                             </div>
                                         </div>
                                     </div>

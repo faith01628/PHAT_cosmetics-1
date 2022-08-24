@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-md-4 clearfix">
                     <div class="logo pull-left">
-                        <a href="{{ asset('user/home') }}"><img src="{{ asset('user/image/logo.png') }}" alt=""
+                        <a href="{{ asset('/') }}"><img src="{{ asset('user/image/logo.png') }}" alt=""
                                 width="150px" /></a>
                     </div>
                     <div class="btn-group pull-right clearfix">

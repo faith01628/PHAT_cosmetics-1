@@ -35,7 +35,7 @@ Route::get('/product/{id}', [
 ]);
 
 Route::post('add-to-cart', [CartController::class, 'addProduct']);
-
+Route::post('delete-cart-item', [CartController::class, 'deleteProduct']);
 Route::middleware(['auth'])->group(function() {
     Route::get('cart', [CartController::class, 'viewCart']);
 });

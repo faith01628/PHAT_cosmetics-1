@@ -53,7 +53,7 @@
                 <ul class="nav nav-pills nav-stacked">
 
                     @foreach ($brands as $brand)
-                        <li><a href="{{ route('brand.product', ['slug' => $brand->slug, 'id' => $brand->id]) }}"><span class="pull-right">(50)</span>{{ $brand->name }}</a></li>
+                        <li><a href="{{ route('brand.product', ['slug' => $brand->slug, 'id' => $brand->id]) }}"><span class="pull-right"></span>{{ $brand->name }}</a></li>
                     @endforeach
 
                 </ul>

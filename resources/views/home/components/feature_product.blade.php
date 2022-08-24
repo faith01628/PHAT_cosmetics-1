@@ -5,7 +5,7 @@
             <div class="product-image-wrapper">
                 <div class="single-products">
                     <div class="productinfo text-center">
-                        <img src="{{ $product->featured_image_path }}" alt="" />
+                        <img src="{{ $product->featured_image_path }}" alt=""/>
                         <h2>${{ number_format($product->price) }}</h2>
                         <p>{{ $product->name }}</p>
                     </div>
